@@ -67,3 +67,11 @@ Deploy application
     cd "br.dev.avn.mangos.WebApi/src/br.dev.avn.mangos.WebApi"
     dotnet lambda deploy-serverless
 ```
+
+
+
+docker run -d --name dynamodb-local -p:8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb
+
+
+
+aws dynamodb create-table --table-name ledger --attribute-definitions AttributeName=PK,AttributeType=S AttributeName=SK,AttributeType=S --key-schema AttributeName=PK,KeyType=HASH AttributeName=SK,KeyType=RANGE --billing-mode PAY_PER_REQUEST --endpoint-url http://localhost:8000
