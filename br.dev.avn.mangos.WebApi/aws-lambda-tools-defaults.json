@@ -10,6 +10,7 @@
   "configuration": "Release",
   "framework": "net10.0",
   "function-runtime": "dotnet10",
+  "function-architecture": "arm64",
   "function-memory-size": 512,
   "function-timeout": 30,
   "function-handler": "br.dev.avn.mangos.WebApi::br.dev.avn.mangos.WebApi.LambdaEntryPoint::FunctionHandlerAsync",
