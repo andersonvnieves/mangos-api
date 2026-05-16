@@ -14,4 +14,9 @@
     <ItemGroup>
         <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="9.2.1"/>
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\br.dev.avn.mangos.Application\br.dev.avn.mangos.Application.csproj" />
+      <ProjectReference Include="..\br.dev.avn.mangos.Domain\br.dev.avn.mangos.Domain.csproj" />
+      <ProjectReference Include="..\br.dev.avn.mangos.Infrastructure\br.dev.avn.mangos.Infrastructure.csproj" />
+    </ItemGroup>
 </Project>

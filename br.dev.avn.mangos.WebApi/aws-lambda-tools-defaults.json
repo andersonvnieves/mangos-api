@@ -6,9 +6,15 @@
     "All the command line options for the Lambda command can be specified in this file."
   ],
   "profile": "",
-  "region": "",
+  "region": "sa-east-1",
   "configuration": "Release",
-  "s3-prefix": "br.dev.avn.mangos.api/",
+  "framework": "net10.0",
+  "function-runtime": "dotnet10",
+  "function-memory-size": 512,
+  "function-timeout": 30,
+  "function-handler": "br.dev.avn.mangos.WebApi::br.dev.avn.mangos.WebApi.LambdaEntryPoint::FunctionHandlerAsync",
+  "function-name": "mangos-api",
+  "s3-prefix": "br.dev.avn.mangos.WebApi/",
   "template": "serverless.template",
   "template-parameters": ""
 }

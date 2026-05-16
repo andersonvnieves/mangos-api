@@ -1,4 +1,4 @@
-﻿namespace br.dev.avn.mangos.api;
+﻿namespace br.dev.avn.mangos.WebApi;
 
 public class Startup
 {

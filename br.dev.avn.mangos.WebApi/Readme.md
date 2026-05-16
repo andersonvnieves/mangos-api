@@ -58,12 +58,12 @@ If already installed check if new version is available.
 
 Execute unit tests
 ```
-    cd "br.dev.avn.mangos.api/test/br.dev.avn.mangos.api.Tests"
+    cd "br.dev.avn.mangos.WebApi/test/br.dev.avn.mangos.WebApi.Tests"
     dotnet test
 ```
 
 Deploy application
 ```
-    cd "br.dev.avn.mangos.api/src/br.dev.avn.mangos.api"
+    cd "br.dev.avn.mangos.WebApi/src/br.dev.avn.mangos.WebApi"
     dotnet lambda deploy-serverless
 ```

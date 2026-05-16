@@ -1,10 +1,10 @@
-namespace br.dev.avn.mangos.api;
+namespace br.dev.avn.mangos.WebApi;
 
 /// <summary>
 /// This class extends from APIGatewayProxyFunction which contains the method FunctionHandlerAsync which is the 
 /// actual Lambda function entry point. The Lambda handler field should be set to
 /// 
-/// br.dev.avn.mangos.api::br.dev.avn.mangos.api.LambdaEntryPoint::FunctionHandlerAsync
+/// br.dev.avn.mangos.WebApi::br.dev.avn.mangos.WebApi.LambdaEntryPoint::FunctionHandlerAsync
 /// </summary>
 public class LambdaEntryPoint :
 

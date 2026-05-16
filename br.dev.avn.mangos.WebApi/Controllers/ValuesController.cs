@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace br.dev.avn.mangos.api.Controllers;
+namespace br.dev.avn.mangos.WebApi.Controllers;
 
 [Route("api/[controller]")]
 public class ValuesController : ControllerBase
