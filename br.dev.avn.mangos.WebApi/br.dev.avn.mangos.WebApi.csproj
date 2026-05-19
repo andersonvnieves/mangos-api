@@ -2,7 +2,6 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net10.0</TargetFramework>
-        <RuntimeIdentifier>linux-arm64</RuntimeIdentifier>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
@@ -19,5 +18,10 @@
       <ProjectReference Include="..\br.dev.avn.mangos.Application\br.dev.avn.mangos.Application.csproj" />
       <ProjectReference Include="..\br.dev.avn.mangos.Domain\br.dev.avn.mangos.Domain.csproj" />
       <ProjectReference Include="..\br.dev.avn.mangos.Infrastructure\br.dev.avn.mangos.Infrastructure.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="appsettings.Development.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 </Project>

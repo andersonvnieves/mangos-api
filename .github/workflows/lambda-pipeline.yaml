@@ -40,6 +40,9 @@ jobs:
 
       - name: Build
         run: dotnet build -c Release
+        
+      - name: Publish
+        run: dotnet publish -c Release -r linux-arm64 --self-contained false
 
       - name: Deploy Lambda
         run: dotnet lambda deploy-function mangos-api

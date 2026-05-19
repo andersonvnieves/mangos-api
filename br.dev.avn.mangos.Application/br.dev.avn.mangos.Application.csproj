@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NUlid" Version="1.7.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\br.dev.avn.mangos.Domain\br.dev.avn.mangos.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

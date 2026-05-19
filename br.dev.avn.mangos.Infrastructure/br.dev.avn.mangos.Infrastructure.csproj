@@ -6,4 +6,20 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Messaging\" />
+    <Folder Include="Persistence\DynamoDB\Mappers\" />
+    <Folder Include="Persistence\DynamoDB\Models\" />
+    <Folder Include="Persistence\Redis\Cache\" />
+    <Folder Include="Persistence\Redis\Projections\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="4.0.18.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\br.dev.avn.mangos.Application\br.dev.avn.mangos.Application.csproj" />
+  </ItemGroup>
+
 </Project>
