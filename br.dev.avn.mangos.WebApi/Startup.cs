@@ -1,15 +1,19 @@
 ﻿using Amazon.DynamoDBv2;
 using br.dev.avn.mangos.Application.Repositories;
 using br.dev.avn.mangos.Application.UseCases.CreditCard;
+using br.dev.avn.mangos.Application.UseCases.CreditCard.RetrieveCCTransaction;
 using br.dev.avn.mangos.Infrastructure.Persistence.DynamoDB.Repositories;
 
 namespace br.dev.avn.mangos.WebApi;
 
 public class Startup
 {
-    public Startup(IConfiguration configuration)
+    public IWebHostEnvironment Environment { get; }
+    
+    public Startup(IConfiguration configuration, IWebHostEnvironment env)
     {
         Configuration = configuration;
+        Environment = env;
     }
 
     public IConfiguration Configuration { get; }
@@ -17,14 +21,15 @@ public class Startup
     // This method gets called by the runtime. Use this method to add services to the container
     public void ConfigureServices(IServiceCollection services)
     {
-        if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+        //Console.WriteLine(Configuration["DynamoDB:ServiceUrl"]);
+        if (Environment.IsDevelopment())
         {
             services.AddSingleton<IAmazonDynamoDB>(_ => {
                 var config = new AmazonDynamoDBConfig
                     {
-                        ServiceURL = Configuration["DynamoDB:ServiceUrl"],
+                        ServiceURL = "http://localhost:8000",
                     };
-                return new AmazonDynamoDBClient("local","local",config);
+                return new AmazonDynamoDBClient(config);
             });
         }
         else
@@ -36,6 +41,7 @@ public class Startup
         
         //UseCases
         services.AddScoped<RegisterCCTRansactionUseCase>();
+        services.AddScoped<RetrieveCCTransactionUseCase>();
         
         services.AddControllers();
     }
@@ -60,7 +66,7 @@ public class Startup
             endpoints.MapGet("/",
                 async context =>
                 {
-                    await context.Response.WriteAsync("Mangos API");
+                    await context.Response.WriteAsync("Mangos API is in healthy state");
                 });
         });
     }

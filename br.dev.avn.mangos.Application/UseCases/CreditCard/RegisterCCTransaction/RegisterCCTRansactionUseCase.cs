@@ -26,6 +26,12 @@ public class RegisterCCTRansactionUseCase
         
         await _ledgerRepository.CreateCardTransaction(transaction);
 
-        return new RegisterCCTRansactionResponse();
+        return new RegisterCCTRansactionResponse()
+        {
+            TransactionId = transaction.TransactionId,
+            UserId = transaction.UserId,
+            Value = transaction.Value,
+            CreatedAt = transaction.CreatedAt,
+        };
     }
 }

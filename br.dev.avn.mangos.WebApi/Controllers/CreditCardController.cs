@@ -1,23 +1,28 @@
 ﻿using br.dev.avn.mangos.Application.UseCases.CreditCard;
+using br.dev.avn.mangos.Application.UseCases.CreditCard.RetrieveCCTransaction;
 using Microsoft.AspNetCore.Mvc;
 
 namespace br.dev.avn.mangos.WebApi.Controllers;
 
-[Route("api/[controller]")]
+[Route("[controller]")]
 public class CreditCardController : ControllerBase
 {
     private readonly RegisterCCTRansactionUseCase _registerCCTRansactionUseCase;
+    private readonly RetrieveCCTransactionUseCase _retrieveCCTransactionUseCase;
 
-    public CreditCardController(RegisterCCTRansactionUseCase registerCCTRansactionUseCase)
+    public CreditCardController(RegisterCCTRansactionUseCase registerCCTRansactionUseCase, 
+        RetrieveCCTransactionUseCase retrieveCCTransactionUseCase)
     {
         _registerCCTRansactionUseCase = registerCCTRansactionUseCase;
+        _retrieveCCTransactionUseCase = retrieveCCTransactionUseCase;
     }
     
-    // GET api/values/5
     [HttpGet("{id}")]
-    public string Get(int id)
+    public async Task<IActionResult> Get(string id)
     {
-        return "value";
+        var response =
+            await _retrieveCCTransactionUseCase.ExecuteAsync(new RetrieveCCTransactionRequest() { TransactionId = id });
+        return Ok(response);
     }
 
     [HttpPost]
