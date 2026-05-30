@@ -7,4 +7,6 @@ public interface ILedgerRepository
 {
     Task  CreateCardTransaction(CreditCardTransaction transaction);
     Task<CreditCardTransaction> GetCardTransaction(string transactionId);
+    
+    Task<IList<CreditCardTransaction>> GetUserTransactions(string userId);
 }
