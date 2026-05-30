@@ -77,4 +77,37 @@ public class DynamoLedgerRepository : ILedgerRepository
             CreatedAt = DateTime.Parse(item["CreatedAt"].S)
         };
     }
+
+    public async Task<IList<CreditCardTransaction>> GetUserTransactions(string userId)
+    {
+        var request = new QueryRequest
+        {
+            TableName = TableName,
+            KeyConditionExpression = "PK = :pk AND begins_with(SK, :sk)",
+            ExpressionAttributeValues = new Dictionary<string, AttributeValue>
+            {
+                [":pk"] = new AttributeValue
+                {
+                    S = $"USER#{userId}"
+                },
+                [":sk"] = new AttributeValue
+                {
+                    S = "TX#"
+                }
+            },
+            ScanIndexForward = false // mais recentes primeiro
+        };
+
+        var response = await _client.QueryAsync(request);
+
+        return response.Items.Select(item => new CreditCardTransaction
+        {
+            TransactionId = item["TransactionId"].S,
+            UserId = item["UserId"].S,
+            Value = decimal.Parse(
+                item["Value"].N,
+                System.Globalization.CultureInfo.InvariantCulture),
+            CreatedAt = DateTime.Parse(item["CreatedAt"].S)
+        }).ToList();
+    }
 }

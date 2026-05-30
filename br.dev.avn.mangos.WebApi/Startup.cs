@@ -1,6 +1,7 @@
 ﻿using Amazon.DynamoDBv2;
 using br.dev.avn.mangos.Application.Repositories;
 using br.dev.avn.mangos.Application.UseCases.CreditCard;
+using br.dev.avn.mangos.Application.UseCases.CreditCard.ListRecentTransactions;
 using br.dev.avn.mangos.Application.UseCases.CreditCard.RetrieveCCTransaction;
 using br.dev.avn.mangos.Infrastructure.Persistence.DynamoDB.Repositories;
 
@@ -42,6 +43,7 @@ public class Startup
         //UseCases
         services.AddScoped<RegisterCCTRansactionUseCase>();
         services.AddScoped<RetrieveCCTransactionUseCase>();
+        services.AddScoped<ListRecentTransactionsUseCase>();
         
         services.AddControllers();
     }
