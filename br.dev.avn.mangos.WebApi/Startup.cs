@@ -45,6 +45,9 @@ public class Startup
         services.AddScoped<RetrieveCCTransactionUseCase>();
         services.AddScoped<ListRecentTransactionsUseCase>();
         
+
+        services.AddCors();
+
         services.AddControllers();
     }
 
@@ -57,6 +60,14 @@ public class Startup
         }
 
         app.UseHttpsRedirection();
+
+        app.UseCors(policy =>
+        {
+            policy.WithOrigins("https://mangos.avn.dev.br")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
+        });
 
         app.UseRouting();
 
