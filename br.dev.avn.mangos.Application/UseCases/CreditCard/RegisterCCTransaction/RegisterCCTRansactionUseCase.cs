@@ -13,13 +13,13 @@ public class RegisterCCTRansactionUseCase
         _ledgerRepository = ledgerRepository;
     }
 
-    public async Task<RegisterCCTRansactionResponse> ExecuteAsync(RegisterCCTRansactionRequest request)
+    public async Task<RegisterCCTRansactionResponse> ExecuteAsync(RegisterCCTRansactionRequest request, string userId)
     {
 
         var transaction = new CreditCardTransaction()
         {
             TransactionId = Ulid.NewUlid().ToString(),
-            UserId = Guid.NewGuid().ToString(),
+            UserId = userId,
             Value = request.Value,
             CreatedAt = request.CreatedAt,
         };

@@ -47,7 +47,8 @@ public class CreditCardController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] RegisterCCTRansactionRequest request)
     {
-        var response = await _registerCCTRansactionUseCase.ExecuteAsync(request);
+        var userId = User.FindFirstValue("sub");
+        var response = await _registerCCTRansactionUseCase.ExecuteAsync(request, userId);
         return Ok(response);
     }
 }
